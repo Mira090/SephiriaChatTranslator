@@ -15,11 +15,12 @@ Team Horay の <a href="https://store.steampowered.com/app/2436940/_/">Sephiria<
 
 ## 📥 インストール
 1. <a href="https://github.com/LavaGang/MelonLoader">MelonLoader v0.7.1</a> をSephiriaにインストールしてください。
-2. Releases から最新の `SephiriaChatTranslator-1.X.X.zip` をダウンロードし、解凍してください。
+2. Releases から最新の `SephiriaChatTranslator.dll` をダウンロードしてください。
 3. `Program Files (x86)\Steam\steamapps\common\Sephiria\Mods` フォルダ内に `SephiriaChatTranslator.dll` を配置します。
 4. ゲームを起動すると自動的に反映されます。
 
 ## 📝 注意事項
 - このリポジトリおよびその貢献者は、Sephiria、Team Horay、または関連団体とは一切関係がありません
+- 翻訳はGoogle App ScriptのLanguageAppを使用しています。
 - このModはオフラインでは使用できません。
 - 翻訳後の文章は他のプレイヤーには送信されず、Modを入れているプレイヤーにのみ表示されます。
