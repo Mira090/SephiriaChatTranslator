@@ -37,7 +37,7 @@ namespace SephiriaChatTranslator
                 TranslateMode = value;
             else if (index == 1)
                 TranslateSecondMode = value;
-            Melon<Core>.Logger.Msg("Loaded: " + new LocalizedString(ModOptions[index][value]).ToString());
+            Melon<Core>.Logger.Msg("Loaded: " + ModOptions[index][value]);
         }
         public string GetTargetLanguage()
         {
