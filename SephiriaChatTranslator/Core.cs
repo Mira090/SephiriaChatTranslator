@@ -199,7 +199,7 @@ namespace SephiriaChatTranslator
 
                         string text = name + " : " + result.text;
                         Debug.Log(text);
-                        GameLogWriter.Instance.WriteLog(text, new Color(0f, 0.75f, 0.5f));
+                        GameLogWriter.Instance.WriteLog(text, new Color(1f, 0f, 0.5f));
                         if ((bool)avatar)
                         {
                             avatar.CreateChatBubble(result.text);
