@@ -86,6 +86,7 @@ namespace SephiriaChatTranslator
                 context.AddText(enUS, "UI_ModSetting_Korean", "Korean");
                 context.AddText(enUS, "UI_ModSetting_Japanese", "Japanese");
                 context.AddText(enUS, "UI_ModSetting_Chinese", "Chinese");
+                context.AddText(enUS, "UI_ChatTranslator_Error", "(It seems the translation failed...)");
 
                 context.AddText(jaJP, "UI_ModSetting_Language", "翻訳に使用する言語");
                 context.AddText(jaJP, "UI_ModSetting_LanguageSecond", "再翻訳に使用する言語");
@@ -94,6 +95,7 @@ namespace SephiriaChatTranslator
                 context.AddText(jaJP, "UI_ModSetting_Korean", "韓国語");
                 context.AddText(jaJP, "UI_ModSetting_Japanese", "日本語");
                 context.AddText(jaJP, "UI_ModSetting_Chinese", "中国語");
+                context.AddText(jaJP, "UI_ChatTranslator_Error", "(翻訳に失敗したようです...)");
 
                 context.AddText(koKR, "UI_ModSetting_Language", "번역에 사용되는 언어");
                 context.AddText(koKR, "UI_ModSetting_LanguageSecond", "재번역에 사용되는 언어");
@@ -102,6 +104,7 @@ namespace SephiriaChatTranslator
                 context.AddText(koKR, "UI_ModSetting_Korean", "한국어");
                 context.AddText(koKR, "UI_ModSetting_Japanese", "일본어");
                 context.AddText(koKR, "UI_ModSetting_Chinese", "중국어");
+                context.AddText(koKR, "UI_ChatTranslator_Error", "(번역에 실패한 것 같습니다 ...)");
             }
         }
 
@@ -125,6 +128,10 @@ namespace SephiriaChatTranslator
                     if (req.result != UnityWebRequest.Result.Success)
                     {
                         Debug.LogWarning(req.error);
+                        if ((bool)avatar)
+                        {
+                            avatar.CreateChatBubble(new LocalizedString("UI_ChatTranslator_Error").ToString());
+                        }
                         yield break;
                     }
 
@@ -132,6 +139,7 @@ namespace SephiriaChatTranslator
                     try
                     {
                         var translated = req.downloadHandler.text;
+                        Debug.Log(translated);
                         result = JsonUtility.FromJson<TranslationResult>(translated);
 
                         if (result.text == message)
@@ -150,6 +158,11 @@ namespace SephiriaChatTranslator
                     catch(Exception ex)
                     {
                         Debug.LogWarning(ex);
+                        Melon<Core>.Logger.Warning(ex);
+                        if ((bool)avatar)
+                        {
+                            avatar.CreateChatBubble(new LocalizedString("UI_ChatTranslator_Error").ToString());
+                        }
                         yield break;
                     }
 
@@ -171,12 +184,17 @@ namespace SephiriaChatTranslator
                     if (req.result != UnityWebRequest.Result.Success)
                     {
                         Debug.LogWarning(req.error);
+                        if ((bool)avatar)
+                        {
+                            avatar.CreateChatBubble(new LocalizedString("UI_ChatTranslator_Error").ToString());
+                        }
                         yield break;
                     }
 
                     try
                     {
                         var translated = req.downloadHandler.text;
+                        Debug.Log(translated);
                         var result = JsonUtility.FromJson<TranslationResult>(translated);
 
                         string text = name + " : " + result.text;
@@ -190,6 +208,11 @@ namespace SephiriaChatTranslator
                     catch (Exception ex)
                     {
                         Debug.LogWarning(ex);
+                        Melon<Core>.Logger.Warning(ex);
+                        if ((bool)avatar)
+                        {
+                            avatar.CreateChatBubble(new LocalizedString("UI_ChatTranslator_Error").ToString());
+                        }
                         yield break;
                     }
 
