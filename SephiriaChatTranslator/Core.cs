@@ -142,11 +142,6 @@ namespace SephiriaChatTranslator
                         Debug.Log(translated);
                         result = JsonUtility.FromJson<TranslationResult>(translated);
 
-                        if (result.text == message)
-                        {
-                            yield break;
-                        }
-
                         string text = name + " : " + result.text;
                         Debug.Log(text);
                         GameLogWriter.Instance.WriteLog(text, new Color(0, 1f, 0.5f));
