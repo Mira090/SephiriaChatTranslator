@@ -118,7 +118,7 @@ namespace SephiriaChatTranslator
             }
             static IEnumerator Enumerator(PlayerAvatar avatar, string name, string message)
             {
-                var url = Url + "?text=" + message + "&source=&target=" + Melon<Core>.Instance.GetTargetLanguage();
+                var url = Url + "?text=" + UnityWebRequest.EscapeURL(message) + "&source=&target=" + Melon<Core>.Instance.GetTargetLanguage();
 
 
                 using (UnityWebRequest req = UnityWebRequest.Get(url))
@@ -175,7 +175,7 @@ namespace SephiriaChatTranslator
                 var second = Melon<Core>.Instance.GetSecondTargetLanguage();
                 if (string.IsNullOrEmpty(second))
                     yield break;
-                var url = Url + "?text=" + message + "&source=" + Melon<Core>.Instance.GetTargetLanguage() + "&target=" + second;
+                var url = Url + "?text=" + UnityWebRequest.EscapeURL(message) + "&source=" + Melon<Core>.Instance.GetTargetLanguage() + "&target=" + second;
 
                 using (UnityWebRequest req = UnityWebRequest.Get(url))
                 {
