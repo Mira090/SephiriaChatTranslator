@@ -112,8 +112,10 @@ namespace SephiriaChatTranslator
         public static class DungeonManagerChatPatch
         {
             public static readonly string Url = "https://script.google.com/macros/s/AKfycbzNx6hm5JzdXNx6a_P3zQaF1eTflxaZ9YId0dwq_uO_QkaS_Uw4y01cJYrBX0tJp_Yj/exec";
-            static void Postfix(PlayerAvatar avatar, string name, string message, ref DungeonManager __instance)
+            static void Postfix(PlayerAvatar avatar, string name, string message, ref DungeonManager __instance, bool __runOriginal)
             {
+                if (!__runOriginal)
+                    return;
                 __instance.StartCoroutine(Enumerator(avatar, name, message));
             }
             static IEnumerator Enumerator(PlayerAvatar avatar, string name, string message)
