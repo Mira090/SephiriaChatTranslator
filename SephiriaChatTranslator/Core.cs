@@ -6,7 +6,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
 
-[assembly: MelonInfo(typeof(SephiriaChatTranslator.Core), "ChatTranslator", "1.0.0", "Mira", null)]
+[assembly: MelonInfo(typeof(SephiriaChatTranslator.Core), "ChatTranslator", "1.0.1", "Mira", null)]
 [assembly: MelonGame("TEAMHORAY", "Sephiria")]
 
 namespace SephiriaChatTranslator
